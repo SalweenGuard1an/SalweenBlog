@@ -44,4 +44,3 @@ export { flatUnwrap as unwrapSlot } from '../node_modules/@nuxtjs/mdc/dist/runti
 export { parseMarkdown } from '../node_modules/@nuxtjs/mdc/dist/runtime/parser';
 export { useColorMode } from '../node_modules/@nuxtjs/color-mode/dist/runtime/composables';
 export { useImage } from '../node_modules/@nuxt/image/dist/runtime/composables';
-export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
