@@ -63,9 +63,9 @@ export default defineNuxtConfig({
   // 应用配置
   app: {
     // GitHub Pages 部署配置
-    // 如果仓库名不是 username.github.io，需要设置 baseURL
-    // 例如：仓库名为 my-blog，则 baseURL 为 '/my-blog/'
-    baseURL: process.env.NODE_ENV === 'production' ? process.env.BASE_URL || '/' : '/',
+    // User Site (username.github.io): baseURL = '/'
+    // Project Site (username.github.io/repo-name): baseURL = '/repo-name/'
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
     
     head: {
       title: 'Salween Blog',
@@ -93,6 +93,10 @@ export default defineNuxtConfig({
       crawlLinks: true,
       // 忽略预渲染错误（404 等）
       failOnError: false
+    },
+    // GitHub Pages 特殊配置
+    output: {
+      publicDir: '.output/public'
     }
   },
 

@@ -7,6 +7,7 @@
     "dev": "nuxt dev",
     "build": "nuxt build",
     "generate": "nuxt generate",
+    "postgenerate": "node scripts/fix-github-pages.js",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },

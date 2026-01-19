@@ -43,9 +43,9 @@ jobs:
       - name: Generate static site
         run: yarn generate
         env:
-          # 如果仓库名不是 username.github.io，需要设置 BASE_URL
+          # 如果仓库名不是 username.github.io，需要设置 NUXT_APP_BASE_URL
           # 格式：/仓库名/
-          BASE_URL: /${{ github.event.repository.name }}/
+          NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
           NODE_ENV: production
 
       - name: Upload artifact
