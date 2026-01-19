@@ -6,9 +6,6 @@ declare module "nitropack/types" {
     '/api/views': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/views').default>>>>
     }
-    '/__nuxt_error': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/@nuxt/nitro-server/dist/runtime/handlers/renderer').default>>>>
-    }
     '/__nuxt_island/**': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/#internal/nuxt/island-renderer').default>>>>
     }
@@ -27,7 +24,7 @@ declare module "nitropack/types" {
     '/api/_content/query': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/@nuxt/content/dist/runtime/server/api/query').default>>>>
     }
-    '/api/_content/cache.1768816933549.json': {
+    '/api/_content/cache.1768817254817.json': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/@nuxt/content/dist/runtime/server/api/cache').default>>>>
     }
     '/api/_content/navigation/:qid/**:params': {
