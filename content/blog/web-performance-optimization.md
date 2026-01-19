@@ -49,19 +49,19 @@ Google 的核心 Web 指标：
 \`\`\`html
 <!-- 使用现代图片格式 -->
 <picture>
-  <source srcset="image.webp" type="image/webp">
-  <source srcset="image.jpg" type="image/jpeg">
-  <img src="image.jpg" alt="描述">
+  <source srcset="/images/example.webp" type="image/webp">
+  <source srcset="/images/example.jpg" type="image/jpeg">
+  <img src="/images/example.jpg" alt="描述">
 </picture>
 
 <!-- 懒加载 -->
-<img src="image.jpg" loading="lazy" alt="描述">
+<img src="/images/example.jpg" loading="lazy" alt="描述">
 
 <!-- 响应式图片 -->
 <img 
-  srcset="small.jpg 480w, medium.jpg 800w, large.jpg 1200w"
+  srcset="/images/small.jpg 480w, /images/medium.jpg 800w, /images/large.jpg 1200w"
   sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px"
-  src="medium.jpg"
+  src="/images/medium.jpg"
   alt="描述"
 >
 \`\`\`

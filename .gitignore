@@ -85,4 +85,5 @@ env/
 *.seed
 *.pid.lock
 .nuxt
-
+dist
+.output

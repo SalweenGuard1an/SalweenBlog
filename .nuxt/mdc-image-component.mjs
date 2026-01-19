@@ -1,1 +1,0 @@
-export { default } from "/Users/salween.li/my proj/SalweenBlog/node_modules/@nuxt/image/dist/runtime/components/NuxtImg.vue"
