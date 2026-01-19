@@ -1,0 +1,293 @@
+import React, { useState } from 'react';
+import { CheckCircle, Circle, ChevronRight, Code, Server, Cloud, Cpu, Database, GitBranch } from 'lucide-react';
+
+const AIInfraRoadmap = () => {
+  const [activePhase, setActivePhase] = useState(0);
+  const [completedItems, setCompletedItems] = useState(new Set());
+
+  const toggleItem = (phaseIdx, itemIdx) => {
+    const key = `${phaseIdx}-${itemIdx}`;
+    const newCompleted = new Set(completedItems);
+    if (newCompleted.has(key)) {
+      newCompleted.delete(key);
+    } else {
+      newCompleted.add(key);
+    }
+    setCompletedItems(newCompleted);
+  };
+
+  const phases = [
+    {
+      title: "Phase 1: 基础补强",
+      duration: "1-2个月",
+      color: "bg-blue-500",
+      icon: Code,
+      skills: [
+        {
+          category: "Python编程",
+          items: [
+            "Python基础语法和数据结构",
+            "面向对象编程",
+            "常用库: requests, pandas, numpy",
+            "异步编程: asyncio, aiohttp",
+            "虚拟环境管理: venv, conda"
+          ]
+        },
+        {
+          category: "Linux系统",
+          items: [
+            "命令行基础: ls, cd, grep, awk, sed",
+            "文件系统和权限管理",
+            "进程管理: ps, top, kill",
+            "系统服务: systemd",
+            "SSH和远程连接"
+          ]
+        },
+        {
+          category: "容器化入门",
+          items: [
+            "Docker基础概念和命令",
+            "Dockerfile编写",
+            "镜像构建和优化",
+            "Docker Compose多容器应用",
+            "容器网络和存储"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Phase 2: 云与编排",
+      duration: "2-3个月",
+      color: "bg-purple-500",
+      icon: Cloud,
+      skills: [
+        {
+          category: "云平台服务",
+          items: [
+            "选择平台: AWS/GCP/Azure",
+            "计算服务: EC2/GCE, Spot实例",
+            "存储服务: S3/GCS对象存储",
+            "网络配置: VPC, 安全组",
+            "IAM权限管理"
+          ]
+        },
+        {
+          category: "Kubernetes",
+          items: [
+            "K8s架构和核心概念",
+            "Pod, Deployment, Service",
+            "ConfigMap和Secret管理",
+            "资源限制和调度",
+            "Helm包管理器"
+          ]
+        },
+        {
+          category: "基础设施即代码",
+          items: [
+            "Terraform基础",
+            "编写和管理tf文件",
+            "State管理",
+            "模块化设计",
+            "云资源自动化部署"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Phase 3: AI基础设施",
+      duration: "2-3个月",
+      color: "bg-green-500",
+      icon: Cpu,
+      skills: [
+        {
+          category: "GPU与加速",
+          items: [
+            "NVIDIA GPU基础和CUDA",
+            "GPU资源调度和共享",
+            "多GPU训练和推理",
+            "GPU监控和优化",
+            "成本优化策略"
+          ]
+        },
+        {
+          category: "模型服务化",
+          items: [
+            "推理框架: TorchServe, Triton",
+            "API服务: FastAPI, Ray Serve",
+            "批处理推理",
+            "模型版本管理",
+            "A/B测试和金丝雀发布"
+          ]
+        },
+        {
+          category: "向量与存储",
+          items: [
+            "向量数据库: Pinecone, Milvus",
+            "Embedding服务部署",
+            "相似度搜索优化",
+            "数据管道构建",
+            "缓存策略: Redis"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Phase 4: 高级主题",
+      duration: "持续深化",
+      color: "bg-orange-500",
+      icon: Server,
+      skills: [
+        {
+          category: "监控与可观测",
+          items: [
+            "Prometheus + Grafana",
+            "日志聚合: ELK/Loki",
+            "分布式追踪: Jaeger",
+            "告警系统配置",
+            "性能分析工具"
+          ]
+        },
+        {
+          category: "MLOps实践",
+          items: [
+            "CI/CD for ML: GitHub Actions",
+            "实验跟踪: MLflow, Weights & Biases",
+            "数据版本控制: DVC",
+            "模型注册表",
+            "自动化测试"
+          ]
+        },
+        {
+          category: "架构与优化",
+          items: [
+            "微服务架构设计",
+            "负载均衡和自动扩展",
+            "成本优化和FinOps",
+            "安全最佳实践",
+            "灾难恢复和高可用"
+          ]
+        }
+      ]
+    }
+  ];
+
+  const knowledgeGraph = [
+    { from: "前端基础", to: "Python编程", relation: "语言迁移" },
+    { from: "前端基础", to: "API设计", relation: "经验复用" },
+    { from: "Python编程", to: "容器化", relation: "应用打包" },
+    { from: "Linux系统", to: "容器化", relation: "基础支撑" },
+    { from: "容器化", to: "Kubernetes", relation: "编排管理" },
+    { from: "云平台", to: "Kubernetes", relation: "托管服务" },
+    { from: "Kubernetes", to: "模型部署", relation: "运行环境" },
+    { from: "GPU管理", to: "模型部署", relation: "计算资源" },
+    { from: "模型部署", to: "监控系统", relation: "可观测性" }
+  ];
+
+  return (
+    <div className="w-full max-w-7xl mx-auto p-6 bg-gradient-to-br from-slate-50 to-slate-100">
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold text-slate-800 mb-2">前端 → AI Infrastructure 转型路线图</h1>
+        <p className="text-slate-600">从前端工程师到AI基础设施工程师的完整学习路径</p>
+      </div>
+
+      {/* 知识关联图谱 */}
+      <div className="mb-8 bg-white rounded-xl shadow-lg p-6">
+        <h2 className="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+          <GitBranch className="text-indigo-500" />
+          知识关联图谱
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {knowledgeGraph.map((link, idx) => (
+            <div key={idx} className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-4 border border-indigo-200">
+              <div className="font-semibold text-indigo-700 text-sm">{link.from}</div>
+              <div className="flex items-center gap-2 my-2">
+                <ChevronRight className="text-purple-400" size={16} />
+                <span className="text-xs text-purple-600">{link.relation}</span>
+              </div>
+              <div className="font-semibold text-purple-700 text-sm">{link.to}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 学习阶段导航 */}
+      <div className="mb-6 flex gap-2 overflow-x-auto pb-2">
+        {phases.map((phase, idx) => {
+          const Icon = phase.icon;
+          return (
+            <button
+              key={idx}
+              onClick={() => setActivePhase(idx)}
+              className={`flex items-center gap-2 px-4 py-3 rounded-lg font-semibold transition-all whitespace-nowrap ${
+                activePhase === idx
+                  ? `${phase.color} text-white shadow-lg scale-105`
+                  : 'bg-white text-slate-600 hover:bg-slate-100'
+              }`}
+            >
+              <Icon size={20} />
+              <div className="text-left">
+                <div className="text-sm">{phase.title}</div>
+                <div className="text-xs opacity-80">{phase.duration}</div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* 当前阶段详情 */}
+      <div className="bg-white rounded-xl shadow-lg p-6">
+        <div className="mb-6">
+          <div className="flex items-center gap-3 mb-2">
+            {React.createElement(phases[activePhase].icon, { 
+              size: 32, 
+              className: phases[activePhase].color.replace('bg-', 'text-') 
+            })}
+            <h2 className="text-3xl font-bold text-slate-800">{phases[activePhase].title}</h2>
+          </div>
+          <p className="text-slate-600">预计学习时间: {phases[activePhase].duration}</p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {phases[activePhase].skills.map((skill, skillIdx) => (
+            <div key={skillIdx} className="bg-slate-50 rounded-lg p-5 border border-slate-200">
+              <h3 className="text-xl font-bold text-slate-700 mb-4 flex items-center gap-2">
+                <Database size={20} className={phases[activePhase].color.replace('bg-', 'text-')} />
+                {skill.category}
+              </h3>
+              <ul className="space-y-2">
+                {skill.items.map((item, itemIdx) => {
+                  const key = `${activePhase}-${skillIdx}-${itemIdx}`;
+                  const isCompleted = completedItems.has(key);
+                  return (
+                    <li
+                      key={itemIdx}
+                      onClick={() => toggleItem(`${skillIdx}`, itemIdx)}
+                      className="flex items-start gap-2 cursor-pointer group hover:bg-white p-2 rounded transition-colors"
+                    >
+                      {isCompleted ? (
+                        <CheckCircle size={18} className="text-green-500 flex-shrink-0 mt-0.5" />
+                      ) : (
+                        <Circle size={18} className="text-slate-300 flex-shrink-0 mt-0.5 group-hover:text-slate-400" />
+                      )}
+                      <span className={`text-sm ${isCompleted ? 'text-slate-400 line-through' : 'text-slate-700'}`}>
+                        {item}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 进度统计 */}
+      <div className="mt-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl shadow-lg p-6 text-white">
+        <h3 className="text-xl font-bold mb-2">学习进度</h3>
+        <p className="text-indigo-100">已完成 {completedItems.size} 个知识点 - 点击上方项目标记为已完成</p>
+      </div>
+    </div>
+  );
+};
+
+export default AIInfraRoadmap;
