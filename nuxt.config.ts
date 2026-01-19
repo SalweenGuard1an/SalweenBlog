@@ -89,8 +89,10 @@ export default defineNuxtConfig({
   // 静态生成配置
   nitro: {
     prerender: {
-      routes: ['/sitemap.xml', '/'],
-      crawlLinks: true
+      routes: ['/'],
+      crawlLinks: true,
+      // 忽略预渲染错误（404 等）
+      failOnError: false
     }
   },
 
