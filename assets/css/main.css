@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义全局样式 */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200;
+  }
+}
+
+@layer components {
+  /* 渐变背景 */
+  .gradient-bg {
+    @apply bg-gradient-to-br from-primary-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800;
+  }
+
+  /* 卡片样式 */
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+  }
+
+  /* 玻璃形态效果 */
+  .glass {
+    @apply bg-white/70 dark:bg-gray-800/70 backdrop-blur-md border border-gray-200 dark:border-gray-700;
+  }
+
+  /* 按钮样式 */
+  .btn-primary {
+    @apply px-6 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2.5 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 rounded-lg font-medium transition-colors duration-200;
+  }
+}
+
+/* 页面过渡动画 */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* ==================== 代码块样式优化 ==================== */
+
+/* 行内代码 */
+:not(pre) > code {
+  @apply px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-primary-600 dark:text-primary-400 text-sm font-mono;
+  border: 1px solid theme('colors.gray.200');
+}
+
+.dark :not(pre) > code {
+  border-color: theme('colors.gray.700');
+}
+
+/* 代码块包装器 */
+.code-wrapper {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+/* 代码块容器 */
+.code-wrapper pre,
+.prose pre {
+  @apply rounded-xl overflow-hidden shadow-lg;
+  background-color: #0d1117 !important;
+  padding: 1.25rem 1.5rem !important;
+  margin: 0 !important;
+  position: relative;
+}
+
+/* 浅色主题的代码块 */
+html:not(.dark) .code-wrapper pre,
+html:not(.dark) .prose pre {
+  background-color: #f6f8fa !important;
+}
+
+/* 代码块内的 code 标签 */
+.code-wrapper pre code,
+.prose pre code {
+  @apply block overflow-x-auto text-sm leading-relaxed;
+  background: transparent !important;
+  padding: 0 !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+  color: inherit;
+  border: none;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+/* Shiki 代码高亮 */
+.code-wrapper pre code .shiki,
+.prose pre code .shiki,
+.shiki {
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+/* 代码行 */
+.code-wrapper pre code .line,
+.prose pre code .line {
+  display: block;
+  min-height: 1.5rem;
+}
+
+/* 语言标签（如果有的话）*/
+.code-wrapper pre::before {
+  content: attr(data-language);
+  @apply absolute top-2 right-2 px-2 py-1 text-xs font-semibold rounded;
+  background: rgba(255, 255, 255, 0.1);
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+html:not(.dark) .code-wrapper pre::before {
+  background: rgba(0, 0, 0, 0.05);
+  color: #57606a;
+}
+
+/* 隐藏没有语言的标签 */
+.code-wrapper pre:not([data-language])::before,
+.code-wrapper pre[data-language=""]::before {
+  display: none;
+}
+
+/* 代码块横向滚动条 */
+.code-wrapper pre code::-webkit-scrollbar,
+.prose pre code::-webkit-scrollbar {
+  height: 8px;
+}
+
+.code-wrapper pre code::-webkit-scrollbar-track,
+.prose pre code::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.code-wrapper pre code::-webkit-scrollbar-thumb,
+.prose pre code::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.code-wrapper pre code::-webkit-scrollbar-thumb:hover,
+.prose pre code::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 复制按钮样式 */
+.copy-button {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.code-wrapper:hover .copy-button {
+  opacity: 1;
+}
+
+/* Prose 内的代码块特殊处理 */
+.prose pre {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* 链接悬停效果 */
+a {
+  @apply transition-colors duration-200;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full hover:bg-gray-400 dark:hover:bg-gray-500;
+}
+
