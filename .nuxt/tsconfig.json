@@ -104,13 +104,13 @@
         "../node_modules/nuxt/dist/app/compat/vue-demi"
       ],
       "#mdc-configs": [
-        "./mdc-configs.mjs"
+        "./mdc-configs"
       ],
       "#mdc-highlighter": [
-        "./mdc-highlighter.mjs"
+        "./mdc-highlighter"
       ],
       "#mdc-imports": [
-        "./mdc-imports.mjs"
+        "./mdc-imports"
       ],
       "#color-mode-options": [
         "./color-mode-options.mjs"
@@ -131,7 +131,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/aaf64290-bd17-4fed-88e5-b365e9bad91c.json"
+        "./manifest/meta/9c2743f4-a484-43ea-a7e4-40b97642ae19"
       ],
       "#components": [
         "./components"
